@@ -1,0 +1,86 @@
+
+import scala.collection.mutable.ArrayBuffer
+import scala.io.Source
+import scala.sys.process._
+
+
+main()
+
+def main() {
+  val url = args(0)
+  getUrls(url).foreach(println)
+}
+
+
+
+def getUrls(url: String): ArrayBuffer[String] = {
+  var result = new ArrayBuffer[String]
+
+  val src = Source.fromURL(url)
+  val video_r = """(https://www.youtube.com/watch?.+?)\"""".r
+
+  for (l <- src.getLines) {
+    var m = video_r.findFirstIn(l)
+    if (m != None) {
+      url = m.get(1)
+      result.append(url)
+    }
+  }
+
+  return result
+}
+
+
+
+def downloadDeb(url: String) {
+  val dir = new File(sys.env("HOME") + "/Downloads")
+  val p = Process("wget " + url, dir, "LANG"->"C")
+  p.!
+}
+
+
+def getDebFilename(url: String) : String = {
+  val deb_r     = """[A-Za-z0-9_.-]+\.deb""".r
+  val filename = deb_r.findFirstIn(url).get
+  return filename
+}
+
+def hasDeb(deb: String) : Boolean = {
+  val dir  = new File(sys.env("HOME") + "/Downloads/" + deb)
+  return dir.isFile()
+}
+
+
+def beInstalled(deb: String): Boolean = {
+  return false
+}
+
+
+def installDeb(deb: String) {
+  val cmd = "sudo dpkg -i " + deb
+  val dir = new File(sys.env("HOME") + "/Downloads")
+  val p   = Process(cmd, dir, "LANG"->"C")
+  p.!
+}
+
+
+
+
+
+//var retcode = "ls ~/Download".!
+//println(f"retcode: $retcode")
+
+
+
+// main()
+
+// def main() {
+//   val dl_s = "ls ~/Download".!!
+//   println(dl_s)
+//   // val url = get_download_url()
+//   // "cd ~/Download".!
+//   // var com = "wget " + url 
+//   // com.!
+//   // "ls ".!
+// }
+
