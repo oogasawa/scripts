@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 
 var packageList = [
-	"amqplib",
-	"fast-sort",
-	"lib-r-math.js",
-	"node-uuid",
-	"node-stringbuilder",
-	"shelljs",
-	"github:oogasawa/sprintf-mjs",
+    "amqplib",
+    "fast-sort",
+    "lib-r-math.js",
+    "mersenne-twister",
+    "node-uuid",
+    "node-stringbuilder",
+    "shelljs",
+    "sprintf-js",
+    "github:oogasawa/sprintf-mjs",
 ];
 
 // -----
