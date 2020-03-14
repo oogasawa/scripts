@@ -1,4 +1,10 @@
 #################
+## node.js
+#################
+node_modules/
+package-lock.json
+
+#################
 ## IntelliJ
 #################
 .idea/
@@ -8,35 +14,35 @@
 #################
 target/
 
-#################
-## Eclipse
-#################
+# #################
+# ## Eclipse
+# #################
 
-*.pydevproject
-.project
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
+# *.pydevproject
+# .project
+# .metadata
+# bin/
+# tmp/
+# *.tmp
+# *.bak
+# *.swp
+# *~.nib
+# local.properties
+# .classpath
+# .settings/
+# .loadpath
 
-# External tool builders
-.externalToolBuilders/
+# # External tool builders
+# .externalToolBuilders/
 
-# Locally stored "Eclipse launch configurations"
-*.launch
+# # Locally stored "Eclipse launch configurations"
+# *.launch
 
-# CDT-specific
-.cproject
+# # CDT-specific
+# .cproject
 
-# PDT-specific
-.buildpath
+# # PDT-specific
+# .buildpath
 
 
 #################
