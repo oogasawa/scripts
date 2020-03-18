@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/oogasawa/scripts#readme",
   "dependencies": {
+    "readline-promise": "^1.0.4",
     "sprintf-js": "^1.1.2"
   }
 }
