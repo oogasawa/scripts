@@ -1,23 +1,46 @@
 #!/usr/bin/env node
 
-function generateId() {
-	
-	var sprintf = require('sprintf-js').sprintf;
-	var MersenneTwister = require('mersenne-twister');
-	var rng = new MersenneTwister();
-	
-	let d = new Date();
+const sprintf = require('sprintf-js').sprintf;
+const process = require('process');
+const MersenneTwister = require('mersenne-twister');
+
+class IdMaker {
+	constructor() {
+		this.rng = new MersenneTwister();
+	}
+		
+	generateId() {
+		let d = new Date();
+		
 	let id = sprintf("%s%02d%02d-%02d%02d%02d-%06d",
 					 d.getFullYear(), d.getMonth()+1, d.getDate(),
 					 d.getHours(), d.getMinutes(), d.getSeconds(),
-					 rng.random()*1000000);
-	console.log(id);
+					 this.rng.random()*1000000);
+
+/*
+		let id = sprintf("%s%02d%02d-%06d",
+						 d.getFullYear(), d.getMonth()+1, d.getDate(),
+						 this.rng.random()*1000000);
+*/
+		
+		return id;
+	}
 }
 
 // -----
 
 function main() {
-	generateId();
+
+	let num = 1;
+	if (process.argv.length > 2) {
+		num = parseInt(process.argv[2]);
+	}
+
+	let idMaker = new IdMaker();
+	
+	for (let i=0; i<num; i++) {
+		console.log(idMaker.generateId());
+	}
 }
 
 main();

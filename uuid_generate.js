@@ -1,4 +1,4 @@
-#!/usr/bin/env nodew
+#!/usr/bin/env node
 
 
 var uuid = require('node-uuid');
