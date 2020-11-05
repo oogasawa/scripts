@@ -17,7 +17,7 @@ main();
 
 function main() {
 	parameters.forEach(p=>{
-		sh.exec("sudo sysctl -a 2> /dev/null | grep " + p)
+		sh.exec("sysctl -a 2> /dev/null | grep " + p)
 	});
 			
 }
